@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Font Awesome -->
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+            rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+            rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.min.css"
+            rel="stylesheet"
+    />
+    <title>Homework</title>
+</head>
+<body>
+<style>
+    .glow-on-hover {
+        font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        width: 150px;
+        height: 40px;
+        border: none;
+        outline: none;
+        color: #fff;
+        background: #111;
+        cursor: pointer;
+        position: relative;
+        z-index: 0;
+        border-radius: 10px;
+        
+    }
+
+    .glow-on-hover:before {
+        content: '';
+        background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        background-size: 400%;
+        z-index: -1;
+        filter: blur(5px);
+        width: calc(100% + 4px);
+        height: calc(100% + 4px);
+        animation: glowing 20s linear infinite;
+        opacity: 0;
+        transition: opacity .3s ease-in-out;
+        border-radius: 10px;
+    }
+
+    .glow-on-hover:active {
+        color: #000
+    }
+
+    .glow-on-hover:hover:before {
+        opacity: 1;
+    }
+
+    .glow-on-hover:after {
+        z-index: -1;
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #111;
+        left: 0;
+        top: 0;
+        border-radius: 10px;
+    }
+    @keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+</style>
+
+<div class="container my-2 d-flex">
+
+    <!--    left elements     -->
+    <div class="col-3">
+        <a href="{% url 'index' %}" style="color: #535353"><h1>Methods</h1></a>
+        <a href="{% url 'all' %}" type="button" class="btn glow-on-hover btn-primary my-1">All()</a>
+        <br>
+        <a href="{% url 'get' %}" type="button" class="btn glow-on-hover btn-primary my-1">Get()</a>
+        <br>
+        <a href="{% url 'filter' %}" type="button" class="btn glow-on-hover btn-primary my-1">Filter()</a>
+        <br>
+        <a href="{% url 'exclude' %}" type="button" class="btn glow-on-hover btn-primary my-1">Exclude()</a>
+        <br>
+        <a href="{% url 'order_by' %}" type="button" class="btn glow-on-hover btn-primary my-1">Order_by()</a>
+        <br>
+        <a href="{% url 'reverse' %}" type="button" class="btn glow-on-hover btn-primary my-1">Reverse()</a>
+        <br>
+        <a href="{% url 'values' %}" type="button" class="btn glow-on-hover btn-primary my-1">Values()</a>
+        <br>
+        <a href="{% url 'values_list' %}" type="button" class="btn glow-on-hover btn-primary my-1">Values_list()</a>
+        <br>
+        <a href="{% url 'dates' %}" type="button" class="btn glow-on-hover btn-primary my-1">Dates()</a>
+        <br>
+        <a href="{% url 'datetimes' %}" type="button" class="btn glow-on-hover btn-primary my-1">Datetimes()</a>
+        <br>
+        <a href="{% url 'none' %}" type="button" class="btn glow-on-hover btn-primary my-1">None()</a>
+        <br>
+        <a href="{% url 'annotate' %}" type="button" class="btn glow-on-hover btn-primary my-1">Annotate()</a>
+        <br>
+        <a href="{% url 'raw' %}" type="button" class="btn glow-on-hover btn-primary my-1">Raw()</a>
+        <br>
+        <a href="{% url 'count' %}" type="button" class="btn glow-on-hover btn-primary my-1">Count()</a>
+        <br>
+        <a href="{% url 'latest' %}" type="button" class="btn glow-on-hover btn-primary my-1">Latest()</a>
+        <br>
+        <a href="{% url 'earliest' %}" type="button" class="btn glow-on-hover btn-primary my-1">Earliest()</a>
+        <br>
+        <a href="{% url 'first' %}" type="button" class="btn glow-on-hover btn-primary my-1">First()</a>
+        <br>
+        <a href="{% url 'last' %}" type="button" class="btn glow-on-hover btn-primary my-1">Last()</a>
+        <br>
+        <a href="{% url 'exists' %}" type="button" class="btn glow-on-hover btn-primary my-1">Exists()</a>
+        <br>
+        <a href="{% url 'aggregate' %}" type="button" class="btn glow-on-hover btn-primary my-1">Aggregate()</a>
+        <br>
+    </div>
+    <!--    right elements    -->
+    <div class="col-3 mx-3">
+        <h1>Usages</h1>
+        {% for product in products %}
+            <p>{{ product }}</p>
+        {% endfor %}
+        <p>{{ product }}</p>
+    </div>
+    <div class="col-3">
+        <h1>Description</h1>
+        <h5>Bu yerda <span style="color: darkorange">{{ title }}()</span> metodi ishladi</h5>
+
+
+    </div>
+</div>
+<script
+        type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.umd.min.js"
+></script>
+</body>
+</html>
